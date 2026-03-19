@@ -28,14 +28,14 @@
     args="-urdf -model $(arg model) -x $(arg x_pos) -y $(arg y_pos) -z $(arg z_pos) -param robot_description" />
 
   <!-- AMCL -->
-  <include file="$(find ped_simulation)/launch/include/amcl.launch.xml">
+  <!-- <include file="$(find ped_simulation)/launch/include/amcl.launch.xml">
     <arg name="robot_x" value="$(arg x_pos)" />
     <arg name="robot_y" value="$(arg y_pos)" />
     <arg name="robot_z" value="$(arg z_pos)" />
-  </include>
+  </include> -->
 
   <!-- MoveBase-->
-  <include file="$(find ped_simulation)/launch/include/move_base.launch.xml" />
+  <!-- <include file="$(find ped_simulation)/launch/include/move_base.launch.xml" /> -->
 
   <!-- RVIZ -->
   <arg name="rviz_file" default="" />

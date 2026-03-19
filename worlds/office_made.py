@@ -2,25 +2,23 @@
 
 import os
 import rospy
+import tf.transformations as tft
 from gazebo_msgs.srv import SpawnModel
 from geometry_msgs.msg import Pose
 
-# ===== 参数区域 =====
-MODEL_NAME = "desk_drawer"
-MODEL_PATH = os.path.expanduser("~/.gazebo/models/" + MODEL_NAME + "/model.sdf")
+# ===== 参数 =====
+MODEL_NAME = "desk"
+MODEL_PATH = os.path.expanduser("~/models/" + MODEL_NAME + "/model.sdf")
 
-DESK_LENGTH = 1.83
-DESK_WIDTH  = 0.53
+SIZE_X = 1.0   # x方向尺寸
+SIZE_Y = 0.7   # y方向尺寸
 
-GROUP_SPACING = 1.4
-
-X_SPACING = DESK_WIDTH
-Y_SPACING = DESK_LENGTH
-
+NUM_X = 4
+NUM_Y = 2
 GROUP_NUM = 2
-NUM_X = 2
-NUM_Y = 3
-# =====================
+
+GROUP_SPACING = 1.4  # 组间距（y方向）
+# =================
 
 
 def spawn_model():
@@ -35,11 +33,12 @@ def spawn_model():
 
     count = 0
 
-    group_width = NUM_X * DESK_WIDTH
+    group_height = NUM_Y * SIZE_Y
 
     for g in range(GROUP_NUM):
 
-        group_offset_x = g * (group_width + GROUP_SPACING)
+        # y方向分组
+        group_offset_y = g * (group_height + GROUP_SPACING)
 
         for i in range(NUM_X):
             for j in range(NUM_Y):
@@ -47,22 +46,32 @@ def spawn_model():
                 model_name = f"desk_{g}_{i}_{j}"
 
                 pose = Pose()
-                pose.position.x = group_offset_x + i * X_SPACING
-                pose.position.y = j * Y_SPACING
+
+                # ===== 基础位置 =====
+                pose.position.x = i * SIZE_X
+                pose.position.y = group_offset_y + j * SIZE_Y
                 pose.position.z = 0
 
-                # 抽屉朝外
-                if i%2 == 0:
-                    pose.orientation.z = -1.0
-                # else:
-                #     pose.orientation.z = 1.0
-                #     pose.orientation.w = 0.0
+                # ===== 姿态（统一用 quaternion）=====
+                if j == 1:
+                    # 第二列：180°旋转
+                    yaw = 3.1415926
 
-                spawn(model_name,
-                      model_xml,
-                      "",
-                      pose,
-                      "world")
+                    # ❗补偿（原点在右下角）
+                    pose.position.x += SIZE_X
+                    pose.position.y += SIZE_Y
+                else:
+                    yaw = 0.0
+                print(f"j={j}, yaw={yaw}")
+
+                q = tft.quaternion_from_euler(0, 0, yaw)
+
+                pose.orientation.x = q[0]
+                pose.orientation.y = q[1]
+                pose.orientation.z = q[2]
+                pose.orientation.w = q[3]
+
+                spawn(model_name, model_xml, "", pose, "world")
 
                 rospy.loginfo(f"Spawned {model_name}")
                 count += 1

@@ -7,7 +7,7 @@ from geometry_msgs.msg import Pose
 
 # ===== 参数区域 =====
 MODEL_NAME = "aws_robomaker_warehouse_ShelfE_01"
-MODEL_PATH = os.path.expanduser("~/.gazebo/models/" + MODEL_NAME + "/model.sdf")
+MODEL_PATH = os.path.expanduser("~/models/" + MODEL_NAME + "/model.sdf")
 
 X_SPACING = 5.9   # 3.9+2
 Y_SPACING = 2.9  # 0.9+2
