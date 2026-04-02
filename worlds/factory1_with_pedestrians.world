@@ -715,13 +715,13 @@
         <enable_wind>0</enable_wind>
         <kinematic>0</kinematic>
       </link>
-      <pose>18.8349 3.65244 0 0 -0 0</pose>
+      <pose>22.9282 4.899 0 0 -0 0</pose>
     </model>
     <state world_name="default">
-      <sim_time>691 158000000</sim_time>
-      <real_time>694 529774899</real_time>
-      <wall_time>1772592341 22557203</wall_time>
-      <iterations>691158</iterations>
+      <sim_time>163 119000000</sim_time>
+      <real_time>165 412056125</real_time>
+      <wall_time>1773904867 288351573</wall_time>
+      <iterations>163119</iterations>
       <model name="ground_plane">
         <pose>0 0 0 0 -0 0</pose>
         <scale>1 1 1</scale>
@@ -883,10 +883,10 @@
         </link>
       </model>
       <model name="shipping_container_conveyor_ariac">
-        <pose>18.25 2.01816 0 0 -0 0</pose>
+        <pose>22.9282 4.899 0 0 -0 0</pose>
         <scale>1 1 1</scale>
         <link name="link">
-          <pose>18.25 2.01816 0 0 -0 0</pose>
+          <pose>22.9282 4.899 0 0 -0 0</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 0 0 -0 0</acceleration>
           <wrench>0 0 0 0 -0 0</wrench>
@@ -898,7 +898,7 @@
     </state>
     <gui fullscreen="0">
       <camera name="user_camera">
-        <pose>38.9953 -9.54559 8.15498 0 0.275643 2.35619</pose>
+        <pose>5.94314 -11.8886 35.2942 -0 1.15964 1.46819</pose>
         <view_controller>orbit</view_controller>
         <projection_type>perspective</projection_type>
       </camera>
@@ -935,7 +935,7 @@
 		<collision scale="5.0 5.0 1.0">RightForeArm_RightHand_collision</collision>
 		<collision scale="4.0 4.0 3.0">RightFingerBase_RightHandIndex1_collision</collision>
 		<collision scale="12.0 20.0 5.0" pose="0.05 0 0 0 -0.2 0">LowerBack_Spine_collision</collision>
-		<velocity>0.8</velocity>
+		<velocity>1.0</velocity>
 		<radius>0.4</radius>
 		<cycle>True</cycle>
 		<animation_factor>5.1</animation_factor>
@@ -957,59 +957,6 @@
 	</plugin>
 	<plugin name="pedestrian_visual" filename="libPedestrianVisualPlugin.so">
 		<update_rate>20</update_rate>
-	</plugin>
-</actor>
-<actor name="human_2">
-	<pose>6.75 2.05 1 0 0 0</pose>
-	<skin>
-		<filename>walk.dae</filename>
-		<scale>1.0</scale>
-	</skin>
-	<animation name="walking">
-		<filename>walk.dae</filename>
-		<scale>1.0</scale>
-		<interpolate_x>true</interpolate_x>
-	</animation>
-	<plugin name="human_2_plugin" filename="libPedestrianSFMPlugin.so">
-		<collision scale="0.01 0.001 0.001">LHipJoint_LeftUpLeg_collision</collision>
-		<collision scale="8.0 8.0 1.0">LeftUpLeg_LeftLeg_collision</collision>
-		<collision scale="10.0 10.0 1.5">LeftLeg_LeftFoot_collision</collision>
-		<collision scale="4.0 4.0 1.5">LeftFoot_LeftToeBase_collision</collision>
-		<collision scale="0.01 0.001 0.001">RHipJoint_RightUpLeg_collision</collision>
-		<collision scale="8.0 8.0 1.0">RightUpLeg_RightLeg_collision</collision>
-		<collision scale="10.0 10.0 1.5">RightLeg_RightFoot_collision</collision>
-		<collision scale="4.0 4.0 1.5">RightFoot_RightToeBase_collision</collision>
-		<collision scale="0.01 0.001 0.001">Spine_Spine1_collision</collision>
-		<collision scale="0.01 0.001 0.001">Neck_Neck1_collision</collision>
-		<collision scale="5.0 5.0 3.0">Neck1_Head_collision</collision>
-		<collision scale="0.01 0.001 0.001">LeftShoulder_LeftArm_collision</collision>
-		<collision scale="5.0 5.0 1.0">LeftArm_LeftForeArm_collision</collision>
-		<collision scale="5.0 5.0 1.0">LeftForeArm_LeftHand_collision</collision>
-		<collision scale="4.0 4.0 3.0">LeftFingerBase_LeftHandIndex1_collision</collision>
-		<collision scale="0.01 0.001 0.001">RightShoulder_RightArm_collision</collision>
-		<collision scale="5.0 5.0 1.0">RightArm_RightForeArm_collision</collision>
-		<collision scale="5.0 5.0 1.0">RightForeArm_RightHand_collision</collision>
-		<collision scale="4.0 4.0 3.0">RightFingerBase_RightHandIndex1_collision</collision>
-		<collision scale="12.0 20.0 5.0" pose="0.05 0 0 0 -0.2 0">LowerBack_Spine_collision</collision>
-		<velocity>0.8</velocity>
-		<radius>0.4</radius>
-		<cycle>True</cycle>
-		<animation_factor>5.1</animation_factor>
-		<people_distance>6.0</people_distance>
-		<goal_weight>2.0</goal_weight>
-		<obstacle_weight>20.0</obstacle_weight>
-		<group_gaze_weight>3.0</group_gaze_weight>
-		<group_coh_weight>2.0</group_coh_weight>
-		<group_rep_weight>1.0</group_rep_weight>
-		<social_weight>15</social_weight>
-		<ignore_obstacles>
-			<model>ground_plane</model>
-			<model>turtlebot3_waffle_pi_addvio</model>
-		</ignore_obstacles>
-		<trajectory>
-			<goalpoint>13.75 2.05 1 0 0 3.14</goalpoint>
-			<goalpoint>-1.95 2.05 1 0 0 3.14</goalpoint>
-		</trajectory>
 	</plugin>
 </actor>
 </world>
