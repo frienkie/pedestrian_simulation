@@ -9,8 +9,12 @@
   <arg name="y_pos" default="0.0" />
   <arg name="z_pos" default="0.0" />
   <arg name="yaw" default="0" />
-  <node pkg="tf2_ros" type="static_transform_publisher" name="map_to_odom"
-      args="0 0 0 0 0 0 map odom" />
+
+  <!-- <node pkg="tf2_ros" type="static_transform_publisher" name="odomraw_to_odom"
+      args="$(arg neg_x_pos) $(arg neg_y_pos) 0 0 0 0 odom_raw odom" /> -->
+
+  <node pkg="tf2_ros" type="static_transform_publisher" name="odom_to_map"
+      args="0 0 0 0 0 0 odom map" />
   <!-- description -->
   <include file="$(find limo_gazebo)/launch/limo_four_diff.launch">
     <arg name="x_pos" value="$(arg x_pos)"/>

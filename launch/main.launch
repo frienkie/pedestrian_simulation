@@ -8,7 +8,7 @@
 	<include file="$(find ped_simulation)/launch/config.launch">
 		<arg name="model" value="turtlebot3_waffle_pi_addvio" />
 		<arg name="x_pos" value="0.0" />
-		<arg name="y_pos" value="1.45" />
+		<arg name="y_pos" value="0.0" />
 		<arg name="z_pos" value="0.0" />
 		<arg name="yaw" value="0.0" />
 		<arg name="map" value="blank" />
