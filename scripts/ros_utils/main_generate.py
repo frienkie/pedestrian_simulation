@@ -54,7 +54,7 @@ class MainGenerator(XMLGenerator):
         include.append(MainGenerator.createElement("arg", props={"name": "z_pos", "value": str(robot_cfg["robot_z_pos"])}))
         include.append(MainGenerator.createElement("arg", props={"name": "yaw", "value": str(robot_cfg["robot_yaw"])}))
         include.append(MainGenerator.createElement("arg", props={"name": "map", "value": self.user_cfg["map"]}))
-        include.append(MainGenerator.createElement("arg", props={"name": "rviz_file", "value": self.user_cfg["rviz_file"]}))
+        # include.append(MainGenerator.createElement("arg", props={"name": "rviz_file", "value": self.user_cfg["rviz_file"]}))
         include.append(MainGenerator.createElement("arg", props={"name": "world", "value": "$(arg world)"}))
         launch.append(include)
         

@@ -15,8 +15,11 @@ MODEL_PATH = os.path.expanduser("~/models/" + MODEL_NAME + "/model.sdf")
 X_SPACING = 6.7   # 3.9+2.8
 Y_SPACING = 3.7  # 0.9+2.8
 
+X_ORIGIN = 0.0  # 起始X坐标
+Y_ORIGIN = -1.45  # 起始Y坐标
+
 NUM_X = 3   # X方向数量（可改）
-NUM_Y = 5   # Y方向数量（可改）
+NUM_Y = 3   # Y方向数量（可改）
 # =====================
 
 def spawn_model():
@@ -34,8 +37,8 @@ def spawn_model():
             model_name = f"shelf_{i}_{j}"
 
             pose = Pose()
-            pose.position.x = i * X_SPACING
-            pose.position.y = j * Y_SPACING
+            pose.position.x = X_ORIGIN + i * X_SPACING
+            pose.position.y = Y_ORIGIN + j * Y_SPACING
             pose.position.z = 0
             pose.orientation.w = 1.0
 
