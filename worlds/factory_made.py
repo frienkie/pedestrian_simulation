@@ -9,8 +9,11 @@ from geometry_msgs.msg import Pose
 MODEL_NAME = "aws_robomaker_warehouse_ShelfE_01"
 MODEL_PATH = os.path.expanduser("~/models/" + MODEL_NAME + "/model.sdf")
 
-X_SPACING = 5.9   # 3.9+2
-Y_SPACING = 2.9  # 0.9+2
+# X_SPACING = 5.9   # 3.9+2
+# Y_SPACING = 2.9  # 0.9+2
+
+X_SPACING = 6.7   # 3.9+2.8
+Y_SPACING = 3.7  # 0.9+2.8
 
 NUM_X = 3   # X方向数量（可改）
 NUM_Y = 5   # Y方向数量（可改）
