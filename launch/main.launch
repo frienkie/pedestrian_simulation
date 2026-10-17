@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <launch>
-	<arg name="world" value="factory1_with_pedestrians" />
+	<arg name="world" value="random" />
 	<include file="$(find ped_simulation)/launch/config.launch">
 		<arg name="model" value="turtlebot3_waffle_pi_addvio" />
 		<arg name="x_pos" value="0.0" />
